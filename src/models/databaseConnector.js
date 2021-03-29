@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
 const config = require('config');
+const BookModel = require('./book.model');
 
 const dbConfig = {
     database: config.get('mysql.database'),
@@ -14,4 +15,6 @@ const sequelize = new Sequelize(dbConfig.database, dbConfig.username, dbConfig.p
     dialect: 'mysql'
 });
 
-module.exports = { sequelize };
+const Book = sequelize.define("book", BookModel);
+
+module.exports = { sequelize, Book };

@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const bookDictionary = require('./controllers/bookDictionary.controller');
+const bookController = require('./controllers/book.controller');
 const { sequelize } = require('./models/databaseConnector');
 const app = express();
 const config = require('config');
@@ -22,7 +22,7 @@ app.get('/', (req, res) => {
     res.sendFile('public/static/index.html', { root: __dirname })
 });
 
-app.use('/books', bookDictionary);
+app.use('/books', bookController);
 
 app.get('**', (req, res) => res.redirect('/'));
 
